@@ -257,62 +257,7 @@ Pengujian sintetis **bukan evaluasi akurasi pada foto asli**.
 5. Notebook mencari dataset lokal terlebih dahulu dan menulis keluaran ke `output/`.
    Folder keluaran diabaikan Git; tambahkan hasil yang diperlukan secara selektif.
 
-## 8. Publikasi GitHub dan deployment Streamlit
-
-Langkah ini memerlukan login akun GitHub/Streamlit milik kelompok.
-
-1. Buat repositori bernama **`deteksi-kematangan-tomat`**, atur visibilitas **Public**.
-2. Unggah kode dan dokumen proyek. Jangan unggah `.venv/`, `.env`, token, atau secrets.
-3. Tambahkan foto dataset asli jika kelompok mengizinkan publikasinya.
-4. Buka **https://share.streamlit.io/** dan login dengan GitHub.
-5. Pilih **Create app**, repositori tersebut, branch yang digunakan, dan main file **`app.py`**.
-6. Pilih Python 3.11/3.12 pada pengaturan deployment jika tersedia.
-7. Gunakan subdomain sesuai tema, misalnya **`deteksi-kematangan-tomat`**.
-   Jika sudah digunakan, tambahkan identitas seperti `-kelompok05`.
-8. Deploy, uji upload dan hasilnya, lalu cantumkan URL yang benar-benar diberikan
-   Streamlit di bagian atas README. Contoh format, **bukan URL aktif yang telah dibuat**:
-   `https://deteksi-kematangan-tomat-kelompok05.streamlit.app`.
-
-Alternatif mengunggah melalui Git (ganti `USERNAME` dengan akun kelompok; buat repo kosong dahulu):
-
-```bash
-git init
-git add README.md app.py pipeline.py requirements.txt .streamlit/config.toml .gitignore tests dataset docs deteksi-kematangan-tomat.ipynb Laporan_Kelompok05.pdf panduan_tugas.png
-git commit -m "Tambahkan website deteksi kematangan tomat"
-git branch -M main
-git remote add origin https://github.com/USERNAME/deteksi-kematangan-tomat.git
-git push -u origin main
-```
-
-Checklist ketentuan tugas:
-
-- [x] Judul, nama/NPM anggota, deskripsi, pipeline, dataset, hasil, eksperimen pembanding, cara install.
-- [x] Website Streamlit menerima upload gambar.
-- [x] Gambar asli dan hasil berdampingan.
-- [x] Informasi label, jumlah per kelas, dan total.
-- [ ] Unggah foto dataset asli untuk reproduksi evaluasi.
-- [ ] Publikasikan repositori GitHub **Public**.
-- [ ] Deploy website dengan URL sesuai tema dan cantumkan URL aktif di README.
-
-## 9. Struktur proyek
-
-```text
-.
-├── app.py                           # Antarmuka website Streamlit
-├── pipeline.py                      # Adaptasi fungsi OpenCV dari notebook
-├── requirements.txt                 # Dependensi aplikasi
-├── .streamlit/config.toml           # Tema dan batas upload
-├── dataset/
-│   ├── README.md                    # Status foto dan petunjuk penempatan
-│   └── ground_truth.csv             # Transkripsi tabel keluaran notebook
-├── tests/                           # Unit test dan Streamlit AppTest
-├── docs/tampilan-website.png         # Cuplikan website dengan demo sintetis
-├── deteksi-kematangan-tomat.ipynb    # Kode dan eksperimen asli kelompok
-├── Laporan_Kelompok05.pdf            # Laporan sumber hasil evaluasi
-└── panduan_tugas.png                 # Panduan tugas UTS
-```
-
-## 10. Referensi dan atribusi
+## 8. Referensi dan atribusi
 
 1. OpenCV, [Changing Colorspaces](https://docs.opencv.org/4.x/df/d9d/tutorial_py_colorspaces.html).
 2. Suzuki, S. & Abe, K. (1985). Topological structural analysis of digitized binary
@@ -320,10 +265,3 @@ Checklist ketentuan tugas:
 3. Gonzalez, R. C. & Woods, R. E. (2018). *Digital Image Processing*, edisi ke-4. Pearson.
 4. Bradski, G. & Kaehler, A. (2008). *Learning OpenCV*. O'Reilly Media.
 5. Hastie, T., Tibshirani, R. & Friedman, J. (2009). *The Elements of Statistical Learning*, edisi ke-2. Springer.
-
-Notebook/laporan menyatakan kerangka notebook serta sebagian fungsi (`pisah_blob`,
-`pilih_tengah`, `diagnosis`, tuning) dibantu Claude. Pergeseran Hue +10, heuristik
-pemisahan blob, dan pemilihan titik tengah dataran dinyatakan sebagai rancangan kelompok.
-Website Streamlit, adaptasi modul, pengujian, dan README ini dikembangkan dengan
-bantuan asisten AI. Anggota kelompok tetap perlu memeriksa kode, hasil, dan isi dokumen
-sebelum pengumpulan. Notebook dan laporan asli dipertahankan tanpa perubahan.
